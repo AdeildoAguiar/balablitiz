@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vampiro: A Máscara v20 — Criador de Ficha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- ════════════════════════════════════════
+       MAIN CONTENT
+  ════════════════════════════════════════ -->
+  <div class="app-main">
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <span class="site-header__emblem">🩸</span>
+      <h1 class="site-header__title">
+        Vampiro: A Máscara
+        <span class="site-header__subtitle">Edição de 20º Aniversário</span>
+      </h1>
+      <p class="site-header__tagline">Criador de Ficha de Personagem</p>
+    </header>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width:16.6%"></div>
+    </div>
+
+    <!-- STEP NAV -->
+    <nav class="steps-nav">
+      <button class="step-btn is-active" id="stepBtn1" onclick="goStep(1)">
+        <span class="step-btn__num">①</span>Conceito
+      </button>
+      <button class="step-btn" id="stepBtn2" onclick="goStep(2)">
+        <span class="step-btn__num">②</span>Atributos
+      </button>
+      <button class="step-btn" id="stepBtn3" onclick="goStep(3)">
+        <span class="step-btn__num">③</span>Habilidades
+      </button>
+      <button class="step-btn" id="stepBtn4" onclick="goStep(4)">
+        <span class="step-btn__num">④</span>Vantagens
+      </button>
+      <button class="step-btn" id="stepBtn5" onclick="goStep(5)">
+        <span class="step-btn__num">⑤</span>Trilhas
+      </button>
+      <button class="step-btn" id="stepBtn6" onclick="goStep(6)">
+        <span class="step-btn__num">📋</span>Ficha Final
+      </button>
+    </nav>
+
+    <!-- ═══════════════════════════════════
+         STEP 1 — CONCEITO
+    ═══════════════════════════════════ -->
+    <section class="section-panel is-active" id="step1">
+      <h2 class="section-heading">Passo 1 — Conceito do Personagem</h2>
+
+      <div class="tip-box">
+        O conceito define quem seu vampiro era <strong>antes do Abraço</strong>. Escolha um Clã — ele determina suas Disciplinas nativas e fraqueza única.
+      </div>
+
+      <div class="form-row-2">
+        <div class="form-field">
+          <label class="form-label">Nome do Personagem</label>
+          <input class="form-input" type="text" id="charName" placeholder="Ex: Marco Antunes" oninput="syncFormState(); updateContext()">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Jogador</label>
+          <input class="form-input" type="text" id="playerName" placeholder="Seu nome">
+        </div>
+      </div>
+
+      <div class="form-row-3">
+        <div class="form-field">
+          <label class="form-label">Conceito (ocupação mortal)</label>
+          <select class="form-select" id="charConcept" onchange="syncFormState()">
+            <option value="">— Selecione —</option>
+            <option>Artista (músico, ator, artista plástico)</option>
+            <option>Criminoso (mafioso, traficante, ladrão)</option>
+            <option>Investigador (detetive, policial, agente)</option>
+            <option>Intelectual (escritor, cientista, filósofo)</option>
+            <option>Político (juiz, assessor, conselheiro)</option>
+            <option>Profissional (médico, engenheiro, advogado)</option>
+            <option>Repórter (jornalista, blogueiro)</option>
+            <option>Soldado (guarda-costas, militar, assassino)</option>
+            <option>Socialite (celebridade, influencer, modelo)</option>
+            <option>Trabalhador (operário, motorista, fazendeiro)</option>
+            <option>Errante (vagabundo, nômade, drogado)</option>
+            <option>Criança / Jovem (pária, fugitivo, gangue)</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Natureza (eu real)</label>
+          <select class="form-select" id="charNature" onchange="syncFormState()">
+            <option value="">— Selecione —</option>
+            <option>Arquiteto — constrói algo de valor</option>
+            <option>Autocrata — precisa de controle</option>
+            <option>Bon Vivant — a não-vida é prazer</option>
+            <option>Caçador de Emoções — a corrida importa</option>
+            <option>Celebrante — sua causa lhe traz alegria</option>
+            <option>Cientista — tudo é um enigma</option>
+            <option>Conformista — segue e observa</option>
+            <option>Diretor — supervisiona o que deve ser feito</option>
+            <option>Fanático — a causa é tudo</option>
+            <option>Galante — você é o show</option>
+            <option>Guru — espiritualmente convincente</option>
+            <option>Idealista — acredita em algo maior</option>
+            <option>Juiz — seu julgamento melhora tudo</option>
+            <option>Mártir — sofre pelo bem maior</option>
+            <option>Monstro — você é maldito, aja como tal</option>
+            <option>Penitente — a não-vida é uma maldição</option>
+            <option>Rebelde — não segue as regras de ninguém</option>
+            <option>Sobrevivente — nada pode te manter no chão</option>
+            <option>Solitário — faz seu próprio caminho</option>
+            <option>Visionário — algo existe além de tudo isso</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Comportamento (máscara)</label>
+          <select class="form-select" id="charBehavior" onchange="syncFormState()">
+            <option value="">— Selecione —</option>
+            <option>Arquiteto</option><option>Autocrata</option><option>Bon Vivant</option>
+            <option>Caçador de Emoções</option><option>Celebrante</option><option>Cientista</option>
+            <option>Conformista</option><option>Diretor</option><option>Fanático</option>
+            <option>Galante</option><option>Guru</option><option>Idealista</option>
+            <option>Juiz</option><option>Malandro</option><option>Mártir</option>
+            <option>Penitente</option><option>Rebelde</option><option>Solitário</option>
+            <option>Visionário</option>
+          </select>
+        </div>
+      </div>
+
+      <h3 class="section-heading--sm">Escolha seu Clã</h3>
+      <div class="clan-grid" id="clanGrid"></div>
+      <div class="clan-detail" id="clanDetail"></div>
+
+      <div class="form-field">
+        <label class="form-label">Geração</label>
+        <select class="form-select" id="charGen" style="max-width:240px" onchange="state.generation=parseInt(this.value); renderDerived()">
+          <option value="13">13ª Geração (novato padrão — 10 pts. sangue)</option>
+          <option value="12">12ª Geração (11 pts. sangue)</option>
+          <option value="11">11ª Geração (12 pts. sangue)</option>
+          <option value="10">10ª Geração — Ancillae (13 pts. sangue)</option>
+          <option value="9">9ª Geração — Experiente (14 pts. sangue)</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label">História de Fundo (opcional)</label>
+        <textarea class="form-textarea" id="charHistory" placeholder="Quem era em vida? Como foi Abraçado? O que o motiva agora?" oninput="syncFormState()"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn--primary" onclick="goStep(2)">Próximo: Atributos →</button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+         STEP 2 — ATRIBUTOS
+    ═══════════════════════════════════ -->
+    <section class="section-panel" id="step2">
+      <h2 class="section-heading">Passo 2 — Atributos</h2>
+
+      <div class="tip-box">
+        Todos começam com <strong>1 ponto automático</strong> em cada atributo. Escolha a prioridade das 3 categorias e distribua os pontos extras.
+      </div>
+
+      <div class="priority-row">
+        <div class="priority-box" id="ap-physical" onclick="setPriority('attr','physical')">
+          <span class="priority-box__label">Físico</span>
+          <span class="priority-box__pts" id="ap-pts-physical">?</span>
+          <span class="priority-box__sub">Força · Destreza · Vigor</span>
+        </div>
+        <div class="priority-box" id="ap-social" onclick="setPriority('attr','social')">
+          <span class="priority-box__label">Social</span>
+          <span class="priority-box__pts" id="ap-pts-social">?</span>
+          <span class="priority-box__sub">Carisma · Manipulação · Aparência</span>
+        </div>
+        <div class="priority-box" id="ap-mental" onclick="setPriority('attr','mental')">
+          <span class="priority-box__label">Mental</span>
+          <span class="priority-box__pts" id="ap-pts-mental">?</span>
+          <span class="priority-box__sub">Percepção · Inteligência · Raciocínio</span>
+        </div>
+      </div>
+
+      <div class="attr-group">
+        <div class="attr-group__title">Físico <span class="attr-group__info" id="phys-info"></span></div>
+        <div id="attrs-physical"></div>
+      </div>
+      <div class="attr-group">
+        <div class="attr-group__title">Social <span class="attr-group__info" id="soc-info"></span></div>
+        <div id="attrs-social"></div>
+      </div>
+      <div class="attr-group">
+        <div class="attr-group__title">Mental <span class="attr-group__info" id="ment-info"></span></div>
+        <div id="attrs-mental"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn--outline" onclick="goStep(1)">← Voltar</button>
+        <button class="btn btn--primary" onclick="goStep(3)">Próximo: Habilidades →</button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+         STEP 3 — HABILIDADES
+    ═══════════════════════════════════ -->
+    <section class="section-panel" id="step3">
+      <h2 class="section-heading">Passo 3 — Habilidades</h2>
+
+      <div class="tip-box">
+        Habilidades <strong>não têm pontos automáticos</strong>. Nenhuma pode passar de 3 nesta fase. Priorize as categorias primeiro, depois distribua.
+      </div>
+
+      <div class="priority-row">
+        <div class="priority-box" id="sp-talents" onclick="setPriority('skill','talents')">
+          <span class="priority-box__label">Talentos</span>
+          <span class="priority-box__pts" id="sp-pts-talents">?</span>
+          <span class="priority-box__sub">Intuitivos / inatos</span>
+        </div>
+        <div class="priority-box" id="sp-pericias" onclick="setPriority('skill','pericias')">
+          <span class="priority-box__label">Perícias</span>
+          <span class="priority-box__pts" id="sp-pts-pericias">?</span>
+          <span class="priority-box__sub">Treinamento rigoroso</span>
+        </div>
+        <div class="priority-box" id="sp-knowledge" onclick="setPriority('skill','knowledge')">
+          <span class="priority-box__label">Conhecimentos</span>
+          <span class="priority-box__pts" id="sp-pts-knowledge">?</span>
+          <span class="priority-box__sub">Aprendizado acadêmico</span>
+        </div>
+      </div>
+
+      <div class="attr-group">
+        <div class="attr-group__title">Talentos <span class="attr-group__info" id="tal-info"></span></div>
+        <div id="skills-talents"></div>
+      </div>
+      <div class="attr-group">
+        <div class="attr-group__title">Perícias <span class="attr-group__info" id="per-info"></span></div>
+        <div id="skills-pericias"></div>
+      </div>
+      <div class="attr-group">
+        <div class="attr-group__title">Conhecimentos <span class="attr-group__info" id="kno-info"></span></div>
+        <div id="skills-know"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn--outline" onclick="goStep(2)">← Voltar</button>
+        <button class="btn btn--primary" onclick="goStep(4)">Próximo: Vantagens →</button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+         STEP 4 — VANTAGENS
+    ═══════════════════════════════════ -->
+    <section class="section-panel" id="step4">
+      <h2 class="section-heading">Passo 4 — Vantagens</h2>
+
+      <div class="tip-box">
+        <strong>Disciplinas do Clã:</strong> 3 pontos (1 em cada das nativas). <strong>Antecedentes:</strong> 5 pontos. <strong>Virtudes:</strong> 7 pontos (1 automático em cada).
+      </div>
+
+      <h3 class="section-heading--sm">Disciplinas (3 pontos — nativas do Clã marcadas)</h3>
+      <div class="disc-grid" id="discGrid"></div>
+
+      <h3 class="section-heading--sm">Antecedentes (5 pontos)</h3>
+      <div class="points-bar">
+        <span class="points-bar__label">Pontos restantes</span>
+        <span class="points-bar__count" id="bgPtsCount">5</span>
+      </div>
+      <div id="bgList"></div>
+
+      <h3 class="section-heading--sm">Virtudes (7 pontos — 1 automático em cada)</h3>
+      <div id="virtueList"></div>
+
+      <div class="btn-row">
+        <button class="btn btn--outline" onclick="goStep(3)">← Voltar</button>
+        <button class="btn btn--primary" onclick="goStep(5)">Próximo: Trilhas →</button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+         STEP 5 — TRILHAS & VALORES DERIVADOS
+    ═══════════════════════════════════ -->
+    <section class="section-panel" id="step5">
+      <h2 class="section-heading">Passo 5 — Trilhas da Sabedoria & Valores Derivados</h2>
+
+      <div class="tip-box">
+        A <strong>Humanidade</strong> é o caminho padrão. Trilhas alternativas usam Virtudes diferentes e representam vampiros que abandonaram sua natureza mortal. Personagens iniciantes devem começar com Humanidade (a critério do Narrador para Trilhas).
+      </div>
+
+      <!-- Derived stats auto-calculated -->
+      <h3 class="section-heading--sm">Valores Derivados (calculados automaticamente)</h3>
+      <div class="derived-grid" id="derivedStats"></div>
+
+      <!-- Path selection -->
+      <h3 class="section-heading--sm">Escolha a Trilha / Humanidade</h3>
+      <div class="tip-box tip-box--blood">
+        <strong>Atenção:</strong> Trilhas alternativas são para personagens experientes ou com aprovação do Narrador. Iniciantes usam <strong>Humanidade</strong>.
+      </div>
+      <div class="path-selector" id="pathSelector"></div>
+      <div class="path-detail" id="pathDetail"></div>
+
+      <!-- Humanity scale reference -->
+      <h3 class="section-heading--sm">Escala de Humanidade (referência)</h3>
+      <div class="humanity-scale" id="humanityScale"></div>
+
+      <!-- Generation table reference -->
+      <h3 class="section-heading--sm">Tabela de Geração (referência)</h3>
+      <div id="genTable"></div>
+
+      <!-- Dice Roller -->
+      <h3 class="section-heading--sm">Rolador de Dados (para testes rápidos)</h3>
+      <div class="tip-box">
+        <strong>Como funciona:</strong> Some Atributo + Habilidade para o número de dados. Cada resultado ≥ dificuldade (padrão 6) = 1 sucesso.
+      </div>
+      <div style="display:flex;gap:1rem;align-items:flex-end;flex-wrap:wrap;margin-bottom:1rem">
+        <div class="form-field" style="margin:0">
+          <label class="form-label">Pool (dados)</label>
+          <input class="form-input" type="number" id="dicePool" min="1" max="20" value="3" style="width:90px">
+        </div>
+        <div class="form-field" style="margin:0">
+          <label class="form-label">Dificuldade</label>
+          <input class="form-input" type="number" id="diceDiff" min="2" max="10" value="6" style="width:90px">
+        </div>
+        <button class="btn btn--primary" onclick="rollDice()">🎲 Rolar</button>
+      </div>
+      <div id="diceResult" style="min-height:60px"></div>
+
+      <!-- Qualities / defects -->
+      <h3 class="section-heading--sm">Qualidades e Defeitos (opcional — máx. 7 pts bônus)</h3>
+      <textarea class="form-textarea" id="charQualities" placeholder="Descreva qualidades e defeitos combinados com o Narrador..." oninput="syncFormState()"></textarea>
+
+      <div class="btn-row">
+        <button class="btn btn--outline" onclick="goStep(4)">← Voltar</button>
+        <button class="btn btn--primary" onclick="goStep(6)">Ver Ficha Final →</button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+         STEP 6 — FICHA FINAL
+    ═══════════════════════════════════ -->
+    <section class="section-panel" id="step6">
+      <h2 class="section-heading">Ficha de Personagem — Completa</h2>
+      <div id="fichaFinal"></div>
+      <div class="btn-row">
+        <button class="btn btn--outline" onclick="goStep(5)">← Voltar</button>
+        <label class="btn btn--outline" style="cursor:pointer">
+          📂 Carregar
+          <input type="file" accept=".json" style="display:none" onchange="loadChar(this)">
+        </label>
+        <button class="btn btn--gold" onclick="window.print()">🖨 Imprimir</button>
+        <button class="btn btn--primary" onclick="saveChar()">💾 Salvar JSON</button>
+      </div>
+    </section>
+
+  </div><!-- /.app-main -->
+
+  <!-- ════════════════════════════════════════
+       AI SIDEBAR
+  ════════════════════════════════════════ -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-header__title">🧛 Assistente das Trevas</div>
+      <div class="sidebar-header__sub">IA especialista em Vampiro v20</div>
+      <div class="sidebar-header__status">
+        <div class="status-dot" id="statusDot"></div>
+        <span id="statusTxt">Online</span>
+        <span style="margin-left:auto">
+          <button class="quick-btn" onclick="clearChat()" style="font-size:0.62rem;padding:0.2rem 0.5rem">Limpar</button>
+        </span>
+      </div>
+    </div>
+
+    <div class="ai-messages" id="aiMessages">
+      <div class="ai-msg ai-msg--assistant">
+        <span class="ai-msg__label">🩸 Assistente</span>
+        Bem-vindo, Cainita. Estou aqui para responder suas dúvidas sobre regras, Clãs, Disciplinas, Trilhas da Sabedoria e qualquer aspecto do Mundo das Trevas. Também posso analisar sua ficha enquanto você a cria. O que deseja saber?
+      </div>
+    </div>
+
+    <div class="quick-btns">
+      <button class="quick-btn" onclick="askQuick('Como funciona o sistema de dados d10?')">Como funcionam os dados?</button>
+      <button class="quick-btn" onclick="askQuick('O que é Humanidade e como ela funciona?')">O que é Humanidade?</button>
+      <button class="quick-btn" onclick="askQuick('Qual Clã é mais fácil para iniciantes?')">Clã para iniciante?</button>
+      <button class="quick-btn" onclick="askQuick('O que é frenesi e como evitá-lo?')">O que é frenesi?</button>
+      <button class="quick-btn" onclick="askQuick('Explique as Trilhas da Sabedoria e como diferem da Humanidade.')">Trilhas da Sabedoria?</button>
+      <button class="quick-btn" onclick="askQuick('O que são Disciplinas e como evoluí-las?')">Como evoluir Disciplinas?</button>
+      <button class="quick-btn" onclick="askQuick('O que é a Camarilla, o Sabá e as Seitas?')">Camarilla vs Sabá?</button>
+      <button class="quick-btn" onclick="askCharAnalysis()">Analisar minha ficha ↗</button>
+    </div>
+
+    <div class="ai-input-area">
+      <textarea class="ai-textarea" id="aiInput"
+        placeholder="Pergunte sobre regras, Clãs, Trilhas, Disciplinas..."
+        onkeydown="aiKeydown(event)"></textarea>
+      <div class="ai-send-row">
+        <span class="ai-hint">Enter = enviar · Shift+Enter = nova linha</span>
+        <button class="btn btn--primary" onclick="sendAI()" style="font-size:0.72rem;padding:0.45rem 1rem">Enviar</button>
+      </div>
+    </div>
+  </aside>
+
+</div><!-- /.app-layout -->
+
+<div class="toast" id="toast"></div>
+
+<script src="js/app.js"></script>
+<script src="js/ai.js"></script>
+<script>
+function askCharAnalysis() {
+  syncFormState();
+  updateContext();
+  const ctx = window.__charContext;
+  let msg = 'Analise minha ficha atual e me dê sugestões de melhoria.';
+  if (ctx && ctx.name) msg += ` Personagem: ${ctx.name}`;
+  askQuick(msg);
+}
+</script>
+
+</body>
+</html>
